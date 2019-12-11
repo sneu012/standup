@@ -6,18 +6,18 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import CardExampleFluid from './card';
-import LoginForm from './login';
+import HomeComponent from './home.component';
+import CheckinComponent from './checkin.component';
+import LoginForm from './login.component';
+import users from './dummyData';
 
 import {
   Container,
   Header,
   Icon,
-  Image,
   Menu,
   Segment,
-  Sidebar,
-  Grid
+  Sidebar
 } from 'semantic-ui-react'
 
 const VerticalSidebar = ({ animation, direction, visible }) => (
@@ -64,16 +64,8 @@ VerticalSidebar.propTypes = {
 }
 
 export default class SidebarExampleTransitions extends Component {
-  state = {
-    animation: 'push',
-    direction: 'left',
-    dimmed: false,
-    visible: true,
-  }
 
   render() {
-    const { animation, dimmed, direction, visible } = this.state
-
     return (
       <Router>
         <Container fluid className="page-container">
@@ -81,50 +73,26 @@ export default class SidebarExampleTransitions extends Component {
           <Sidebar.Pushable as={Segment}  style={{ width: '100%'}}>
             {
               <VerticalSidebar
-                animation={animation}
-                direction={direction}
-                visible={visible}
+                animation='push'
+                direction='left'
+                visible={true}
               />
             }
             
             <Route exact path="/">
-              <Sidebar.Pusher dimmed={dimmed && visible} style={{ width: '90%'}}>
-              <Grid celled='internally'>
-                <Grid.Row>
-                  <Grid.Column width={3}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-                  </Grid.Column>
-                  <Grid.Column width={10}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png' />
-                  </Grid.Column>
-                  <Grid.Column width={3}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-                  </Grid.Column>
-                </Grid.Row>
-
-                <Grid.Row>
-                  <Grid.Column width={3}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-                  </Grid.Column>
-                  <Grid.Column width={10}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-                  </Grid.Column>
-                  <Grid.Column width={3}>
-                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
+              <Sidebar.Pusher className="main-content">
+                <HomeComponent users={users}/>
               </Sidebar.Pusher>
             </Route>
 
             <Route path="/check-in">
-              <Sidebar.Pusher dimmed={dimmed && visible}>
-                <CardExampleFluid />
+              <Sidebar.Pusher fluid className="main-content">
+                <CheckinComponent />
               </Sidebar.Pusher>
             </Route>
 
             <Route path="/login">
-              <Sidebar.Pusher dimmed={dimmed && visible}>
+              <Sidebar.Pusher className="main-content">
                 <LoginForm />
               </Sidebar.Pusher>
             </Route>

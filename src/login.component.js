@@ -1,6 +1,6 @@
   
 import React from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown, Divider } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment, Dropdown, Divider } from 'semantic-ui-react'
 const options = [
     { key: undefined, value: undefined, text: 'Select' },
     { key: 'ehr', value: 'ehr', text: 'EHR' },
