@@ -86,7 +86,7 @@ export default class SidebarExampleTransitions extends Component {
             </Route>
 
             <Route path="/check-in">
-              <Sidebar.Pusher fluid className="main-content">
+              <Sidebar.Pusher className="main-content">
                 <CheckinComponent />
               </Sidebar.Pusher>
             </Route>
