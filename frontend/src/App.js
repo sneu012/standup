@@ -10,7 +10,7 @@ import HomeComponent from './home.component';
 import CheckinComponent from './checkin.component';
 import LoginForm from './login.component';
 import users from './dummyData';
-
+import GroupsComponent from './groups/groups.component'
 import {
   Container,
   Header,
@@ -42,10 +42,10 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
         Check-in
     </Menu.Item>
     </Link>
-    <Link to='/camera'>
+    <Link to='/groups'>
       <Menu.Item as='span'>
-        <Icon name='camera' />
-        Channels
+        <Icon name='users' />
+        Groups
     </Menu.Item>
     </Link>
     <Link to='/login'>
@@ -94,6 +94,12 @@ export default class SidebarExampleTransitions extends Component {
             <Route path="/login">
               <Sidebar.Pusher className="main-content">
                 <LoginForm />
+              </Sidebar.Pusher>
+            </Route>
+
+            <Route path="/groups">
+              <Sidebar.Pusher className="main-content">
+                <GroupsComponent />
               </Sidebar.Pusher>
             </Route>
 
